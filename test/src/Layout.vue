@@ -14,8 +14,9 @@
   const mdxComponents = {
   h1: H1,
   "my-counter" : Counter,
-  Counter : Counter,
-  Hello
+  AsyncCounter : ()=>import('./Counter.vue').then(m=>m.default),
+  Hello,
+  HelloFn: () => Hello,
 };
   export default {
   components: {MDXProvider},
