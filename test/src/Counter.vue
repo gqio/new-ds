@@ -1,0 +1,62 @@
+<template>
+  <div>
+    <button @click="dec">
+          -
+    </button>
+    <span>{{state.count}} {{name||'empty'}}</span>
+    <button @click="inc">
+          +
+    </button>
+  </div>
+</template>
+
+<script>
+  import { reactive } from 'vue';
+
+	export default {
+    props: {
+      name: String,
+    },
+		setup() {
+			const state = reactive({
+				count: 0,
+			});
+
+			function inc() {
+				state.count++
+			}
+
+			function dec() {
+				state.count--
+			}
+
+			return {
+				state,
+				inc,
+				dec
+			};
+		}
+	};
+</script>
+
+<style scoped>
+  span,
+  button {
+    font-size: 200%;
+  }
+
+  span {
+    width: 4rem;
+    display: inline-block;
+    text-align: center;
+  }
+
+  button {
+    width: 4rem;
+    height: 4rem;
+    border: none;
+    border-radius: 10px;
+    background-color: teal;
+    color: white;
+  }
+</style>
